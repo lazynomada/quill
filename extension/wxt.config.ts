@@ -5,4 +5,10 @@ export default defineConfig({
   srcDir: 'src',
   extensionApi: 'chrome',
   modules: ['@wxt-dev/module-svelte'],
+  manifest: {
+    permissions: [
+      'scripting',
+      'activeTab',
+    ],
+  }
 });

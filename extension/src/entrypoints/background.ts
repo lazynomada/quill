@@ -1,3 +1,5 @@
 export default defineBackground(() => {
-  console.log('Hello background!', { id: browser.runtime.id });
+  chrome.tabs.onUpdated.addListener(function (tabId, changeInfo) {
+    chrome.tabs.sendMessage(tabId, changeInfo)
+  })
 });
