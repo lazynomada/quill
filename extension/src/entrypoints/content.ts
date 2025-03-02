@@ -1,4 +1,4 @@
-import AppInitializer from '@/binders/AppInitializer'
+import ButtonBinder from '@/binders/button.binder'
 
 import './style.css'
 
@@ -7,6 +7,6 @@ export default defineContentScript({
   matches: ['<all_urls>'],
   cssInjectionMode: 'ui',
   main(ctx) {
-    AppInitializer(ctx)
+    new ButtonBinder(ctx).mount();
   },
 })

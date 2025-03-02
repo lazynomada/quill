@@ -3,7 +3,7 @@
     import Button from "./ui/button/button.svelte"
 
     function pressed() {
-       const element = document.querySelector('table.iN table div[aria-label="Message Body"] div') as HTMLDivElement
+       const element = document.querySelector('table.iN table div[aria-label="Message Body"]') as HTMLDivElement
         if (!element) return;
 
         const texts = element.innerText.split("\n").filter(c => Boolean(c))
