@@ -1,7 +1,6 @@
-import ButtonBinder from '@/binders/button.binder'
+import ButtonBinder from '@/binders/ButtonBinder'
 
 import './style.css'
-
 
 export default defineContentScript({
   matches: ['<all_urls>'],

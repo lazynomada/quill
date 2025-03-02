@@ -2,10 +2,11 @@
     import Logo from "@/assets/svelte.svg"
     import Button from "./ui/button/button.svelte"
 
-    function pressed() {
-       const element = document.querySelector('table.iN table div[aria-label="Message Body"]') as HTMLDivElement
-        if (!element) return;
+    const { id } = $props() as { id: string };
 
+    function pressed() {
+        console.log(id);
+        const element = document.querySelector(`td[id="${id}"] table div[aria-label="Message Body"]`) as HTMLDivElement
         const texts = element.innerText.split("\n").filter(c => Boolean(c))
 
         console.log(texts);

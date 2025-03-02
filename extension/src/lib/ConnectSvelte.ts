@@ -1,10 +1,12 @@
-import AssistButton from "@/components/AssistButton.svelte"
-import { mount, unmount } from "svelte"
+
+import { Component, mount, unmount } from "svelte"
 import type { ContentScriptContext } from "wxt/client"
 
 export default class ConnectSvelte {
     constructor(
+        protected component: Component<any, any, any>,
         protected css: string,
+        protected props: Record<string, any>
     ) { }
 
     async mount(ctx: ContentScriptContext, anchor: Element) {
@@ -13,11 +15,8 @@ export default class ConnectSvelte {
             anchor,
             name: 'ui-quill',
             position: 'inline',
-    
-            onMount: this.render,
-            onRemove: () => {
-                unmount(AssistButton)
-            },
+            onMount: (container) => this.render(container),
+            onRemove: () => unmount(this.component),
         })
     }
 
@@ -29,6 +28,6 @@ export default class ConnectSvelte {
     }
 
     render(container: Element) {
-        return mount(AssistButton, { target: container })
+        return mount(this.component, { target: container, props: this.props })
     }
 }
