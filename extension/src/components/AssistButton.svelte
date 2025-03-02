@@ -5,7 +5,6 @@
     const { id } = $props() as { id: string };
 
     function pressed() {
-        console.log(id);
         const element = document.querySelector(`td[id="${id}"] table div[aria-label="Message Body"]`) as HTMLDivElement
         const texts = element.innerText.split("\n").filter(c => Boolean(c))
 
