@@ -1,6 +1,14 @@
 import type { Context } from "@netlify/functions";
-import HelloWorld from "@/HelloWorld";
+import HelloWorldInterceptor from "@/interceptors/HelloWorldInterceptor";
 
 export default async (req: Request, context: Context) => {
-  return new Response(HelloWorld())
+  const interceptor = new HelloWorldInterceptor();
+
+  const result = interceptor.get("Nomada")
+
+  if (result.error) {
+    return new Response('response not allowed', { status: 402 })
+  }
+
+  return new Response(result.data);
 }
